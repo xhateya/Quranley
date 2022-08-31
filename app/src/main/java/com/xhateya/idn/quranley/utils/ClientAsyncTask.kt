@@ -3,7 +3,7 @@
 package com.xhateya.idn.quranley.utils
 
 import android.os.AsyncTask
-import com.example.aplikasialquran.fragment.FragmentJadwalSholat
+import com.xhateya.idn.quranley.fragment.FragmentJadwalSholat
 import java.io.BufferedReader
 import java.io.InputStream
 import java.io.InputStreamReader
