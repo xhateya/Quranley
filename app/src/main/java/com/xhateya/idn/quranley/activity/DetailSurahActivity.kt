@@ -83,9 +83,9 @@ class DetailSurahActivity : AppCompatActivity() {
         }
 
         progressDialog = ProgressDialog(this)
-        progressDialog!!.setTitle("Mohon Tunggu")
+        progressDialog!!.setTitle("Please Wait")
         progressDialog!!.setCancelable(false)
-        progressDialog!!.setMessage("Sedang menampilkan data...")
+        progressDialog!!.setMessage("Showing Data...")
 
         rvAyat.layoutManager = LinearLayoutManager(this)
         rvAyat.setHasFixedSize(true)

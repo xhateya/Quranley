@@ -13,34 +13,9 @@
         android:orientation="horizontal">
 
         <RelativeLayout
-            android:id="@+id/rvTop"
+            android:id="@+id/rl_tes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fff5f5f5">
-
-            <LinearLayout
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/bg_circle"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/tvNomorAyat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rvTop"
             android:layout_marginTop="10dp">
 
             <TextView
@@ -63,6 +38,31 @@
                 android:textIsSelectable="true"
                 android:textSize="12sp"
                 android:textStyle="bold" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rvTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_tes"
+            android:background="#fff5f5f5">
+
+            <LinearLayout
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/bg_circle"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tvNomorAyat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
         </RelativeLayout>
 
