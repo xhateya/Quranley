@@ -3,6 +3,7 @@ package com.xhateya.idn.quranley.model
 import java.io.Serializable
 
 
+//sum -- object -> byte stream
 class ModelSurah : Serializable {
 
     var arti: String? = null
@@ -18,7 +19,6 @@ class ModelSurah : Serializable {
 
     @JvmField
     var type: String? = null
-    var audio: String? = null
 
     @JvmField
     var nomor: String? = null

@@ -1,18 +1,14 @@
 @file:Suppress("DEPRECATION")
 
 package com.xhateya.idn.quranley.activity
-
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
-import android.media.AudioManager
-import android.media.MediaPlayer
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.text.Html
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidnetworking.AndroidNetworking
@@ -28,7 +24,6 @@ import com.xhateya.idn.quranley.networking.Api
 import kotlinx.android.synthetic.main.activity_detail_surah.*
 import org.json.JSONArray
 import org.json.JSONException
-import java.io.IOException
 import java.util.ArrayList
 
 class DetailSurahActivity : AppCompatActivity() {
@@ -39,7 +34,6 @@ class DetailSurahActivity : AppCompatActivity() {
     private var type: String? = null
     private var ayat: String? = null
     private var keterangan: String? = null
-    private var audio: String? = null
     private var modelSurah: ModelSurah? = null
     private var ayatAdapter: AyatAdapter? = null
     var progressDialog: ProgressDialog? = null
@@ -51,7 +45,7 @@ class DetailSurahActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_surah)
 
-        //set toolbar
+        //Buat Set Toolbar top
         toolbar_detail.title = null
         setSupportActionBar(toolbar_detail)
         if (BuildConfig.DEBUG && supportActionBar == null) {
@@ -61,7 +55,7 @@ class DetailSurahActivity : AppCompatActivity() {
 
         mHandler = Handler()
 
-        //get data dari ListSurah
+        //dapetin data dari ListSurah
         modelSurah = intent.getSerializableExtra("detailSurah") as ModelSurah
         if (modelSurah != null) {
             nomor = modelSurah!!.nomor
@@ -69,13 +63,10 @@ class DetailSurahActivity : AppCompatActivity() {
             arti = modelSurah!!.arti
             type = modelSurah!!.type
             ayat = modelSurah!!.ayat
-            audio = modelSurah!!.audio
             keterangan = modelSurah!!.keterangan
 
-            fabStop.visibility = View.GONE
-            fabPlay.visibility = View.VISIBLE
 
-            //Set text
+            //Buat Set Text
             tvHeader.text = nama
             tvTitle.text = nama
             tvSubTitle.text = arti
@@ -89,27 +80,6 @@ class DetailSurahActivity : AppCompatActivity() {
                 tvKet.text = Html.fromHtml(keterangan)
             }
 
-            //get & play Audio
-            val mediaPlayer = MediaPlayer()
-            fabPlay.setOnClickListener {
-                try {
-                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
-                    mediaPlayer.setDataSource(audio)
-                    mediaPlayer.prepare()
-                    mediaPlayer.start()
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-                fabPlay.visibility = View.GONE
-                fabStop.visibility = View.VISIBLE
-            }
-
-            fabStop.setOnClickListener {
-                mediaPlayer.stop()
-                mediaPlayer.reset()
-                fabPlay.visibility = View.VISIBLE
-                fabStop.visibility = View.GONE
-            }
         }
 
         progressDialog = ProgressDialog(this)
@@ -124,7 +94,7 @@ class DetailSurahActivity : AppCompatActivity() {
         listAyat()
     }
 
-    private fun listAyat () {
+    private fun listAyat() {
         progressDialog!!.show()
         AndroidNetworking.get(Api.URL_LIST_AYAT)
             .addPathParameter("nomor", nomor)
@@ -145,15 +115,20 @@ class DetailSurahActivity : AppCompatActivity() {
                             showListAyat()
                         } catch (e: JSONException) {
                             e.printStackTrace()
-                            Toast.makeText(this@DetailSurahActivity, "Gagal menampilkan data!",
-                                Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this@DetailSurahActivity, "Failed to show data",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
                 }
+
                 override fun onError(anError: ANError) {
                     progressDialog!!.dismiss()
-                    Toast.makeText(this@DetailSurahActivity, "Tidak ada jaringan internet!",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@DetailSurahActivity, "No internet connection",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             })
     }

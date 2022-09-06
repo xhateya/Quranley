@@ -9,10 +9,11 @@ import com.xhateya.idn.quranley.R
 import com.xhateya.idn.quranley.model.ModelAyat
 
 
-class AyatAdapter(private val items: List<ModelAyat>) : RecyclerView.Adapter<AyatAdapter.ViewHolder>() {
+class AyatAdapter(private val items: List<ModelAyat>) :
+    RecyclerView.Adapter<AyatAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.list_item_ayat, parent, false)
-        return ViewHolder(v)
+        val a = LayoutInflater.from(parent.context).inflate(R.layout.list_item_ayat, parent, false)
+        return ViewHolder(a)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -26,7 +27,6 @@ class AyatAdapter(private val items: List<ModelAyat>) : RecyclerView.Adapter<Aya
         return items.size
     }
 
-    //Class Holder
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tvNomorAyat: TextView = itemView.findViewById(R.id.tvNomorAyat)
         var tvArabic: TextView = itemView.findViewById(R.id.tvArabic)

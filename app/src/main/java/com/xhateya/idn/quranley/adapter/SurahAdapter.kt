@@ -13,7 +13,7 @@ import com.xhateya.idn.quranley.model.ModelSurah
 class SurahAdapter(
     private val items: List<ModelSurah>,
     private val onSelectData: OnSelectedData
-) : RecyclerView.Adapter<SurahAdapter.ViewHolder>(){
+) : RecyclerView.Adapter<SurahAdapter.ViewHolder>() {
     interface OnSelectedData {
         fun onSelected(modelSurah: ModelSurah?)
     }
@@ -44,7 +44,5 @@ class SurahAdapter(
         var txtAyat: TextView = itemView.findViewById(R.id.txtAyat)
         var txtInfo: TextView = itemView.findViewById(R.id.txtInfo)
         var txtName: TextView = itemView.findViewById(R.id.txtName)
-
     }
-
 }

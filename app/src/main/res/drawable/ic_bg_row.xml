@@ -4,6 +4,7 @@
     android:height="24dp"
     android:viewportWidth="500"
     android:viewportHeight="500">
+
     <group>
         <clip-path android:pathData="M0,0h500v500h-500z M 0,0" />
         <path
@@ -14,4 +15,5 @@
             android:strokeLineCap="square"
             android:strokeLineJoin="miter" />
     </group>
+
 </vector>
