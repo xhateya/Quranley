@@ -75,6 +75,7 @@
                     android:gravity="center"
                     android:textColor="@color/colorPrimary"
                     android:textSize="18sp"
+                    android:layout_margin="15dp"
                     android:textStyle="bold" />
 
             </LinearLayout>

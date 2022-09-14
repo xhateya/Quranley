@@ -9,10 +9,8 @@ import android.text.format.DateFormat
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidnetworking.AndroidNetworking
-import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONArrayRequestListener
-import com.google.android.gms.location.*
 import com.xhateya.idn.quranley.R
 import com.xhateya.idn.quranley.adapter.SurahAdapter
 import com.xhateya.idn.quranley.model.ModelSurah
@@ -61,7 +59,6 @@ class ListSurahActivity : AppCompatActivity(), SurahAdapter.OnSelectedData {
     private fun listSurah() {
         progressDialog!!.show()
         AndroidNetworking.get(Api.URL_LIST_SURAH)
-            .setPriority(Priority.MEDIUM)
             .build()
             .getAsJSONArray(object : JSONArrayRequestListener {
                 override fun onResponse(response: JSONArray) {
@@ -88,7 +85,6 @@ class ListSurahActivity : AppCompatActivity(), SurahAdapter.OnSelectedData {
                         }
                     }
                 }
-
                 override fun onError(anError: ANError) {
                     progressDialog!!.dismiss()
                     Toast.makeText(
